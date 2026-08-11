@@ -1,125 +1,977 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanne Borstlap</title>
+
+    <title>Groundwater Levels on the Delmarva Peninsula</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.6;
-            color: #333;
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        html {
+            scroll-behavior: smooth;
         }
 
-        h1 {
-            color: #2c5f5d;
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: #263635;
+            background: #f7f9f8;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 30px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
         }
 
         h2 {
-            color: #3f7f7b;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+            font-size: 34px;
+            color: #174c49;
+            margin-bottom: 25px;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+        h3 {
+            color: #28645f;
         }
 
-        .photo {
-            width: 400px;
+        p {
+            font-size: 17px;
         }
 
-        .section {
-            margin-top: 40px;
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            background: #173f3d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
-        a {
-            color: #2c5f5d;
+        nav .container {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .button {
-            display: inline-block;
-            padding: 10px 18px;
-            background-color: #2c5f5d;
+        .nav-title {
+            color: white;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        nav a {
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            margin-left: 25px;
+            font-size: 14px;
         }
 
-        .button:hover {
-            background-color: #1f4644;
+        nav a:hover {
+            text-decoration: underline;
         }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 600px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 45, 43, 0.60),
+                    rgba(0, 45, 43, 0.60)
+                ),
+                url("images/Delmarva_groundwater.png");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            margin: 0 0 25px 0;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 23px;
+            max-width: 750px;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: white;
+        }
+
+        .intro {
+            font-size: 20px;
+            max-width: 900px;
+        }
+
+
+        /* =========================
+           FIGURES
+        ========================= */
+
+        .figure {
+            margin: 45px 0;
+        }
+
+        .figure img {
+            width: 100%;
+            max-height: 750px;
+            object-fit: contain;
+            background: #eee;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.15);
+
+            cursor: pointer;
+
+            transition: transform 0.2s ease;
+        }
+
+        .figure img:hover {
+            transform: scale(1.01);
+        }
+
+        .caption {
+            font-size: 14px;
+            color: #687574;
+            margin-top: 12px;
+        }
+
+
+        /* =========================
+           TWO COLUMN
+        ========================= */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+
+        /* =========================
+           RHESSYS CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 45px;
+        }
+
+        .card {
+            background: #f1f5f4;
+            padding: 28px;
+            border-radius: 8px;
+            border-top: 4px solid #28645f;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        .card p {
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           WORKFLOW
+        ========================= */
+
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 45px;
+        }
+
+        .step {
+            background: #eaf1ef;
+            padding: 25px 18px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 34px;
+            font-weight: bold;
+            color: #28645f;
+        }
+
+        .step h3 {
+            margin: 10px 0;
+        }
+
+        .step p {
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           HIGHLIGHT
+        ========================= */
+
+        .highlight {
+            background: #e4efed;
+            border-left: 6px solid #28645f;
+            padding: 30px 35px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight p {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           FINAL MESSAGE
+        ========================= */
+
+        .final-section {
+            text-align: center;
+        }
+
+        .final-section p {
+            max-width: 850px;
+            margin: auto;
+            font-size: 19px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #173f3d;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 5px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 19px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            nav .container {
+                height: auto;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- Main title -->
-    <h1>Hanne Borstlap</h1>
 
-    <p>
-        PhD Student in Environmental Sciences at the University of Virginia.
-        My research focuses on hydrology, ecohydrology, and coastal resilience.
-    </p>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
+<nav>
 
-    <!-- About section -->
-    <div class="section">
-        <h2>About Me</h2>
+    <div class="container">
 
-        <p>
-            I study how groundwater and surface water interact in flat,
-            coastal landscapes, with a focus on the Eastern Shore of Virginia.
-        </p>
+        <div class="nav-title">
+            Delmarva Groundwater
+        </div>
 
-        <img src="images/my-photo.jpg" alt="Description of the photo" class="photo">
+        <div>
+            <a href="#about">About</a>
+            <a href="#rhessys">RHESSys</a>
+            <a href="#workflow">Approach</a>
+            <a href="#maps">Maps</a>
+            <a href="#risk">Vulnerability</a>
+        </div>
+
     </div>
 
+</nav>
 
-    <!-- Research section -->
-    <div class="section">
-        <h2>Research</h2>
 
-        <p>
-            My research uses hydrologic modeling and observational data to
-            understand groundwater dynamics and environmental change in
-            coastal agricultural landscapes.
-        </p>
 
-        <img src="images/research-photo.jpg" alt="Research site">
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <h1>
+                Groundwater Levels on the Delmarva Peninsula
+            </h1>
+
+            <p>
+                Understanding shallow groundwater in an extremely
+                flat, coastal landscape
+            </p>
+
+        </div>
+
     </div>
 
+</header>
 
-    <!-- Links -->
-    <div class="section">
-        <h2>Links</h2>
 
-        <p>
-            <a href="https://www.virginia.edu">University of Virginia</a>
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <h2>
+            Why groundwater?
+        </h2>
+
+        <p class="intro">
+
+            Shallow groundwater on the Delmarva Peninsula can vary
+            substantially over short distances. In this extremely
+            low-relief coastal landscape, groundwater frequently
+            approaches the land surface, influencing agriculture,
+            drainage, ecosystems, and the performance of septic systems.
+
         </p>
 
         <p>
-            <a href="https://scholar.google.com" class="button">
-                Google Scholar
+
+            These local differences are difficult to capture with
+            conventional hydrologic models. Small variations in
+            elevation, soil properties, vegetation, drainage
+            infrastructure, and groundwater gradients can strongly
+            influence where water accumulates and where it drains.
+
+        </p>
+
+        <div class="highlight">
+
+            <strong>
+                The goal of this work is to develop high-resolution
+                groundwater predictions across the Delmarva Peninsula
+                and use them to identify areas where groundwater
+                hazards may create the greatest environmental and
+                societal challenges.
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GROUNDWATER MAP
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <h2>
+            Mapping groundwater at high resolution
+        </h2>
+
+        <p>
+
+            High-resolution predictions allow us to capture spatial
+            variability that may be missed by coarser regional
+            groundwater models. This is particularly important in
+            flat coastal environments, where local features can
+            strongly influence groundwater levels.
+
+        </p>
+
+
+        <div class="figure">
+
+            <!-- Clicking the image opens it at full size -->
+
+            <a href="images/Delmarva_groundwater.png" target="_blank">
+
+                <img
+                    src="images/Delmarva_groundwater.png"
+                    alt="High-resolution groundwater predictions across the Delmarva Peninsula"
+                >
+
             </a>
-        </p>
+
+            <p class="caption">
+
+                <strong>
+                    Predicted groundwater conditions across the
+                    Delmarva Peninsula.
+                </strong>
+
+                High-resolution groundwater predictions capture
+                spatial variability across the peninsula's
+                low-relief coastal landscape. Click the map to
+                view the full-size figure.
+
+            </p>
+
+        </div>
+
     </div>
 
+</section>
 
-    <!-- Contact -->
-    <div class="section">
-        <h2>Contact</h2>
+
+
+<!-- =========================
+     RHESSYS
+========================= -->
+
+<section id="rhessys">
+
+    <div class="container">
+
+        <h2>
+            Adapting RHESSys for a flat coastal landscape
+        </h2>
+
+        <p class="intro">
+
+            The Regional Hydro-Ecologic Simulation System (RHESSys)
+            is a physically based, spatially distributed hydrologic
+            model that simulates interactions among water, vegetation,
+            soils, and energy across landscapes.
+
+        </p>
 
         <p>
-            Email: your.email@example.com
+
+            RHESSys was originally developed for landscapes where
+            topography provides strong controls on water movement.
+            Those assumptions are less appropriate on the Delmarva
+            Peninsula, where elevation gradients are extremely small
+            and groundwater can move independently of surface
+            watershed boundaries.
+
         </p>
+
+        <p>
+
+            We therefore adapted RHESSys to better represent the
+            processes that control shallow groundwater in this
+            landscape.
+
+        </p>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    Drainage ditches
+                </h3>
+
+                <p>
+
+                    High-resolution mapping of agricultural drainage
+                    ditches allows the model to represent their role
+                    in draining saturated soils and connecting
+                    different parts of the landscape.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Local groundwater gradients
+                </h3>
+
+                <p>
+
+                    Local groundwater gradients are incorporated
+                    rather than relying solely on broad-scale
+                    topographic gradients to drive groundwater flow.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Cross-watershed flow
+                </h3>
+
+                <p>
+
+                    Groundwater can move across surface watershed
+                    boundaries. The adapted model allows these
+                    connections to be represented.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Spatial soils
+                </h3>
+
+                <p>
+
+                    Spatial variation in soil properties influences
+                    infiltration, storage, drainage, and groundwater
+                    recharge.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Land cover & vegetation
+                </h3>
+
+                <p>
+
+                    Different land covers and vegetation conditions
+                    influence evapotranspiration, recharge, and
+                    drainage.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Local infrastructure
+                </h3>
+
+                <p>
+
+                    Features such as agricultural ponds and drainage
+                    infrastructure are incorporated to better
+                    represent local hydrologic processes.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
     </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORKFLOW
+========================= -->
+
+<section id="workflow">
+
+    <div class="container">
+
+        <h2>
+            From process-based modeling to peninsula-wide predictions
+        </h2>
+
+        <p>
+
+            RHESSys is first used to simulate groundwater dynamics
+            in monitored watersheds. These simulations provide
+            physically based predictions while preserving relationships
+            among environmental conditions and groundwater levels.
+
+            A machine learning model is then trained using the same
+            environmental inputs and RHESSys predictions, allowing
+            groundwater estimates to be extended across the entire
+            peninsula.
+
+        </p>
+
+
+        <div class="workflow">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Observe
+                </h3>
+
+                <p>
+                    Groundwater observations from monitored watersheds
+                    provide data for model evaluation.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Simulate
+                </h3>
+
+                <p>
+                    Adapted RHESSys simulates groundwater dynamics
+                    at high spatial resolution.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Learn
+                </h3>
+
+                <p>
+                    Machine learning learns relationships between
+                    environmental characteristics and RHESSys
+                    groundwater predictions.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>
+                    Scale
+                </h3>
+
+                <p>
+                    Predictions are extended from individual
+                    watersheds to the entire Delmarva Peninsula.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SEPTIC / VULNERABILITY
+========================= -->
+
+<section id="maps">
+
+    <div class="container">
+
+        <h2>
+            Connecting groundwater to septic vulnerability
+        </h2>
+
+        <p class="intro">
+
+            Groundwater hazards become particularly important when
+            they overlap with infrastructure that depends on
+            subsurface conditions.
+
+        </p>
+
+        <p>
+
+            Septic systems are one example. When groundwater levels
+            are very shallow, there may be less unsaturated soil
+            available for wastewater treatment and disposal.
+            Understanding where shallow groundwater and septic systems
+            overlap can therefore help identify areas that may warrant
+            additional attention.
+
+        </p>
+
+
+        <div class="figure">
+
+            <a href="images/Septic_hotspots.png" target="_blank">
+
+                <img
+                    src="images/Septic_hotspots.png"
+                    alt="Groundwater and septic hotspot map for the Eastern Shore of Virginia"
+                >
+
+            </a>
+
+            <p class="caption">
+
+                <strong>
+                    Groundwater–septic hotspots on the Eastern Shore
+                    of Virginia.
+                </strong>
+
+                Hot and cold spots are shown at multiple confidence
+                levels, highlighting spatial patterns in potential
+                groundwater-related septic vulnerability. Click the
+                map to view the full-size figure.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     RISK
+========================= -->
+
+<section id="risk">
+
+    <div class="container">
+
+        <h2>
+            From environmental hazards to community vulnerability
+        </h2>
+
+        <div class="two-column">
+
+            <div>
+
+                <p>
+
+                    Groundwater conditions alone do not determine
+                    vulnerability. The consequences of groundwater
+                    hazards depend on the infrastructure, properties,
+                    and communities located in affected areas.
+
+                </p>
+
+                <p>
+
+                    To better identify areas where adaptation may be
+                    most needed, groundwater predictions can be
+                    combined with socioeconomic indicators, parcel-level
+                    property values, and septic system locations.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <div class="highlight">
+
+                    <h3>
+                        A targeted approach
+                    </h3>
+
+                    <p>
+
+                        Combining environmental hazards with
+                        socioeconomic information helps identify
+                        communities where groundwater challenges may
+                        create the greatest environmental and societal
+                        impacts.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BIG PICTURE
+========================= -->
+
+<section class="final-section">
+
+    <div class="container">
+
+        <h2>
+            A scalable framework for coastal groundwater assessment
+        </h2>
+
+        <p>
+
+            This framework combines physically based hydrologic
+            modeling, machine learning, high-resolution environmental
+            data, and socioeconomic information to move from
+            understanding groundwater processes to identifying
+            actionable areas of vulnerability.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            The resulting maps can help support more targeted planning
+            and allocation of adaptation resources in communities
+            facing increasingly challenging groundwater conditions.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            <strong>
+                Groundwater Levels on the Delmarva Peninsula
+            </strong>
+        </p>
+
+        <p>
+            High-resolution modeling of groundwater dynamics and
+            environmental vulnerability
+        </p>
+
+    </div>
+
+</footer>
+
 
 </body>
+
 </html>

@@ -1,9 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanne Borstlap</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c5f5d;
+        }
+
+        h2 {
+            color: #3f7f7b;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .photo {
+            width: 400px;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        a {
+            color: #2c5f5d;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #2c5f5d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #1f4644;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello, world! Welcome to my GitHub Page.</h1>
+
+    <!-- Main title -->
+    <h1>Hanne Borstlap</h1>
+
+    <p>
+        PhD Student in Environmental Sciences at the University of Virginia.
+        My research focuses on hydrology, ecohydrology, and coastal resilience.
+    </p>
+
+
+    <!-- About section -->
+    <div class="section">
+        <h2>About Me</h2>
+
+        <p>
+            I study how groundwater and surface water interact in flat,
+            coastal landscapes, with a focus on the Eastern Shore of Virginia.
+        </p>
+
+        <img src="images/my-photo.jpg" alt="Description of the photo" class="photo">
+    </div>
+
+
+    <!-- Research section -->
+    <div class="section">
+        <h2>Research</h2>
+
+        <p>
+            My research uses hydrologic modeling and observational data to
+            understand groundwater dynamics and environmental change in
+            coastal agricultural landscapes.
+        </p>
+
+        <img src="images/research-photo.jpg" alt="Research site">
+    </div>
+
+
+    <!-- Links -->
+    <div class="section">
+        <h2>Links</h2>
+
+        <p>
+            <a href="https://www.virginia.edu">University of Virginia</a>
+        </p>
+
+        <p>
+            <a href="https://scholar.google.com" class="button">
+                Google Scholar
+            </a>
+        </p>
+    </div>
+
+
+    <!-- Contact -->
+    <div class="section">
+        <h2>Contact</h2>
+
+        <p>
+            Email: your.email@example.com
+        </p>
+    </div>
+
 </body>
 </html>
